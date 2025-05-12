@@ -13,8 +13,10 @@ import cua
 import morphvm_computer
 import openai
 from openai import AzureOpenAI
+from dotenv import load_dotenv
 
 
+load_dotenv()
 
 # Computer use instructions for the LLM model to follow
 COMPUTER_USE_INSTRUCTIONS = """
@@ -80,8 +82,8 @@ async def main():
 
     if args.endpoint == "azure":
         client = openai.AsyncAzureOpenAI(
-            azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
-            api_key=os.environ["AZURE_OPENAI_API_KEY"],
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
             api_version="2025-03-01-preview",
         )
     else:
@@ -90,7 +92,7 @@ async def main():
     model = args.model
 
     # Computer is used to take screenshots and send keystrokes or mouse clicks
-    computer = local_computer.LocalComputer()
+    computer = morphvm_computer.LocalComputer()
 
     # Scaler is used to resize the screen to a smaller size
     # computer = cua.Scaler(computer, (1024, 768))

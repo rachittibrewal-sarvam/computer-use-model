@@ -7,8 +7,11 @@ from PIL import Image
 
 import pyautogui
 from morphcloud.computer import Computer
+from dotenv import load_dotenv
 
+load_dotenv()
 
+os.environ['MORPH_API_KEY'] = os.getenv("MORPH_API_KEY")
 class LocalComputer:
     """Use pyautogui to take screenshots and perform actions on the local computer."""
 
