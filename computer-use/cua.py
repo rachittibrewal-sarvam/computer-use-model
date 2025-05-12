@@ -40,24 +40,8 @@ class Scaler:
     async def screenshot(self) -> str:
         # Take a screenshot from the actual computer
         screenshot = await self.computer.screenshot()
-        screenshot = base64.b64decode(screenshot)
-        buffer = io.BytesIO(screenshot)
-        image = PIL.Image.open(buffer)
-        # Scale the screenshot
-        self.screen_width, self.screen_height = image.size
-        width, height = self.dimensions
-        ratio = min(width / self.screen_width, height / self.screen_height)
-        new_width = int(self.screen_width * ratio)
-        new_height = int(self.screen_height * ratio)
-        new_size = (new_width, new_height)
-        resized_image = image.resize(new_size, PIL.Image.Resampling.LANCZOS)
-        image = PIL.Image.new("RGB", (width, height), (0, 0, 0))
-        image.paste(resized_image, (0, 0))
-        buffer = io.BytesIO()
-        image.save(buffer, format="PNG")
-        buffer.seek(0)
-        data = bytearray(buffer.getvalue())
-        return base64.b64encode(data).decode("utf-8")
+        screenshot = screenshot.decode("utf-8")
+        return screenshot
 
     async def click(self, x: int, y: int, button: str = "left") -> None:
         x, y = self._point_to_screen_coords(x, y)
