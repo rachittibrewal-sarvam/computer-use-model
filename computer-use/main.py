@@ -25,14 +25,13 @@ COMPUTER_USE_INSTRUCTIONS = """
 ## General Principles
 - Always analyze the current screen state before taking any action
 - Plan a sequence of steps before executing complex tasks
-- Verify the results of your actions after each step
-- Prioritize precision over speed when interacting with UI elements
+- Prioritize speed when interacting with UI elements
 
 ## Navigation Best Practices
 - Use direct clicks on navigation elements rather than typing URLs when possible
 - Identify and use keyboard shortcuts when available (Cmd+C/Ctrl+C for copy, Cmd+V/Ctrl+V for paste, etc.)
 - Use Tab to navigate through form fields efficiently
-- Scroll slowly and incrementally when scanning for information
+- Scroll slowly and incrementally when scanning for information, trying using keyboard shortcuts for page up and page down when possible instead of scrolling when possible.
 
 ## UI Interaction Guidelines
 - Click on the center of buttons and interactive elements
